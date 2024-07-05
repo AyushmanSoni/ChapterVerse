@@ -1,0 +1,23 @@
+{
+  "name": "chapterverse",
+  "version": "1.0.0",
+  "description": "mern project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyushmanSoni/Chapterverse.git"
+  },
+  "author": "Ayushman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AyushmanSoni/Chapterverse.git"
+  },
+  "homepage": "https://github.com/AyushmanSoni/Chapterverse#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.4"
+  }
+}
