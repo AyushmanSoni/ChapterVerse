@@ -1,11 +1,10 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+require("dotenv").config();
+require("./conn/conn");
 // const port = 3000
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
 
-app.listen(1000, () => {
-  console.log(`server started`);
+app.listen(process.env.PORT, () => {
+  console.log(`server started at port ${process.env.PORT}`);
 });
