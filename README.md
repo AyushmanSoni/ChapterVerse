@@ -28,3 +28,17 @@ During the development of this project, I encountered several key challenges tha
 **Solution**: Exported the database connection function from a separate module, promoting a modular design and better separation of concerns.
 
 By addressing these challenges, I was able to enhance the reliability, maintainability, and overall quality of the application.
+
+### Issue: "User is not a constructor"
+
+I encountered an issue where the error message "User is not a constructor" appeared. This occurred while trying to create a new instance of the `User` model in my Express.js route.
+
+#### Cause:
+The error was due to an incorrect import of the `User` model in my route file.
+
+#### Solution:
+1. **Check the User Model Definition:**
+   Ensure that the `user.js` model file is properly defined and exported. Specifically, I resolved the issue by defining the model and exporting it correctly:
+   ```javascript
+   const user = mongoose.model('User', userSchema);
+   module.exports = user;
