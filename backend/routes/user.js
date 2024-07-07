@@ -1,6 +1,7 @@
 const router = require ("express").Router();
 const User = require("../models/user");
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 //Sign Up
 router.post("/sign-up",async (req, res) => {
     try {
@@ -51,14 +52,21 @@ router.post("/sign-in",async (req, res) => {
        const{username,password} = req.body;
 
        const exixtingUser = await User.findOne({username});
-       
+
        if(!exixtingUser){ //agar user hai hi to invalid direct
         res.status(400).json({message: "Invalid Credentials"});
        }
 
        await bcryptjs.compare(password,exixtingUser.password,(err,data)=>{
-        if(data){ //agar enter kiya hu data hamre database se match kar jata hai to sign in success
-            res.status(200).json({message: "Sign In Successfully"});
+        if(data){  //agar enter kiya hu data hamre database se match kar jata hai to sign in success
+            const authClaims =[
+                {name: exixtingUser.username},
+                {role: exixtingUser.role},
+            ];
+            const token = jwt.sign({authClaims},"bookstore123",{
+                expiresIn:"30d",
+            });
+            res.status(200).json({id: exixtingUser._id,role: exixtingUser.role,token:token});
         }
         else { // hum user ko nhi bata rahe hai ki tumne username ya password galat bhara just telling invalid credentials
             res.status(400).json({message: "Invalid Credentials"});
