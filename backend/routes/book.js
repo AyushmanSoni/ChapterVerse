@@ -59,4 +59,16 @@ try {
 }
 });
 //get all books api
+router.get("/get-al-books", async (req,res) => {
+    try {
+        const books = await Book.find().sort({createdAT: -1});
+        return res.json({
+            status: "Success",
+            data: books,
+        });
+    } catch (error) {
+        // console.log(error);
+        return res.status(500).json({message: "An error occured"});
+    }
+});
 module.exports = router;
