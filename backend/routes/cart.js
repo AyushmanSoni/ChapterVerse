@@ -26,7 +26,7 @@ router.put("/add-to-cart", authenticateToken, async (req,res) => {
         console.log(error);
         return res.status(500).json({message: "An error occured"});
     }
-})
+});
 //remove form cart
 router.put("/remove-from-cart/:bookid", authenticateToken, async (req,res)=> {
     try {
@@ -57,5 +57,5 @@ router.get("/get-user-cart", authenticateToken, async (req,res)=> {
         console.log(error);
         return res.status(500).json({message: "An error occured"});
     }
-})
+});
 module.exports = router;

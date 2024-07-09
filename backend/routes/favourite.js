@@ -3,7 +3,7 @@ const User = require("../models/user");
 const {authenticateToken} = require("./userAuth");
 
 //add book to favourite
-router.put("/add-book-to-favourite", authenticateToken, async (req,res)=> {
+router.put("/add-book-to-favourites", authenticateToken, async (req,res)=> {
     try {
         const {bookid, id} = req.headers;
         const userData = await User.findById(id);
@@ -18,7 +18,7 @@ router.put("/add-book-to-favourite", authenticateToken, async (req,res)=> {
     }
 });
 //remove from favourites
-router.put("/remove-book-from-favourite", authenticateToken, async (req,res)=> {
+router.put("/remove-book-from-favourites", authenticateToken, async (req,res)=> {
     try {
         const {bookid, id} = req.headers;
         const userData = await User.findById(id);
@@ -32,7 +32,7 @@ router.put("/remove-book-from-favourite", authenticateToken, async (req,res)=> {
     }
 });
 //get favourite books of perticular user
-router.get("/get-fovourite-boos", authenticateToken, async (req,res)=> {
+router.get("/get-fovourite-books", authenticateToken, async (req,res)=> {
     try {
         const {id} = req.headers;
         const userData = await User.findById(id).populate("favourites");
