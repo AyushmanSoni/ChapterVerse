@@ -5,9 +5,11 @@ require("dotenv").config();
 const {conn} = require("./conn/conn")
 const user = require("./routes/user")
 const Books = require("./routes/book")
+const favourite = require("./routes/favourite")
 //routes
 app.use("/api/v1",user);
 app.use("/api/v1",Books);
+app.use("/api/v1",favourite);
 conn();
 
 app.listen(process.env.PORT, (error) => {

@@ -84,6 +84,7 @@ router.get("/get-recent-books", async (req,res) => {
         return res.status(500).json({message: "An error occured"});
     }
 });
+//get books by id
 router.get("/get-book-by-id/:id", async (req,res)=>{
     try {
         const {id} = req.params;
