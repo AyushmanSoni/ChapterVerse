@@ -44,5 +44,5 @@ router.get("/get-fovourite-boos", authenticateToken, async (req,res)=> {
     } catch (error) {
         return res.status(500).json({message: "An error occured"});
     }
-})
+});
 module.exports = router;
