@@ -17,7 +17,6 @@ router.put("/add-book-to-favourite", authenticateToken, async (req,res)=> {
         res.status(500).json({message: "Internal server error"});
     }
 });
-
 //remove from favourites
 router.delete("/remove-book-from-favourite", authenticateToken, async (req,res)=> {
     try {
@@ -32,7 +31,6 @@ router.delete("/remove-book-from-favourite", authenticateToken, async (req,res)=
         res.status(500).json({message: "Internal server error"});
     }
 });
-
 //get favourite books of perticular user
 router.get("/get-fovourite-boos", authenticateToken, async (req,res)=> {
     try {
