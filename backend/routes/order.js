@@ -66,5 +66,20 @@ router.get("/get-all-orders", authenticateToken, async (req,res) => {
         console.log(error);
         return res.status(500).json({message: "An error occured"});
     }
-});k
+});
+
+//upadate orders - admin
+router.put("/update-status/:id", authenticateToken, async (req,res)=>{
+    try {
+        const {id} = req.params;
+        await Order.findByIdAndUpdate(id,{status: req.body.status});
+        return res.json({
+            status: "Success",
+            message: "Status Updated Successfully",
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "An error occured"});
+    }
+});
 module.exports = router;
