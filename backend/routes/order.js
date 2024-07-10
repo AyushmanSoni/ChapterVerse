@@ -49,4 +49,22 @@ router.get("/get-order-history", authenticateToken, async (req,res) => {
     }
 });
 
+router.get("/get-all-orders", authenticateToken, async (req,res) => {
+    try {
+        const userDatav= await Order.find().populate({
+            path: "book",
+        })
+        .populate({
+            path: "user",
+        })
+        .sort({createdAt: -1});
+        return res.json({
+            status: "Success",
+            data: userData,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "An error occured"});
+    }
+});k
 module.exports = router;
