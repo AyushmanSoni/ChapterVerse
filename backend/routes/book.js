@@ -22,14 +22,15 @@ router.post("/add-book",authenticateToken, async (req,res) =>{
         await book.save();
         res.status(200).json({message: "Book added Successfully"});
     } catch (error) {
+        console.log(error);
         res.status(500).json({message: "Internal server error"});
     }
 });
 //update books
-router.put("update-book",authenticateToken, async (req,res) =>{
+router.put("/update-book",authenticateToken, async (req,res) =>{
     try {
-        const {Bookid} = req.headers;
-        await Book.findByIdAndUpadate(bookid,{
+        const {bookid} = req.headers;
+        await Book.findByIdAndUpdate(bookid,{
             url: req.body.url,
             title: req.body.title,
             author: req.body.author,
@@ -41,7 +42,7 @@ router.put("update-book",authenticateToken, async (req,res) =>{
             message: "Book Update Successfully!",
         });
     } catch (error) {
-        // console.log(error);
+        console.log(error);
         return res.status(500).json({message: "An error occured"});
     }
 });
