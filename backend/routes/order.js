@@ -29,5 +29,24 @@ router.post("/place-order", authenticateToken, async (req,res)=>{
         console.log(error);
         return res.status(500).json({message: "An error occured"});
     }
-})
+});
+
+router.get("/get-order-history", authenticateToken, async (req,res) => {
+    try {
+        const {id} = req.headers;
+        const userdata = await User.findById(id).populate({
+            path: "orders",
+            populate: {path: "book"},
+        });
+        const orderData = userData.orders.reverse();
+        return res.json({
+            status: "Success",
+            data: orderData,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "An error occured"});
+    }
+});
+
 module.exports = router;
