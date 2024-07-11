@@ -42,3 +42,36 @@ The error was due to an incorrect import of the `User` model in my route file.
    ```javascript
    const user = mongoose.model('User', userSchema);
    module.exports = user;
+
+# Challenges Faced in Developing ChapterVerse
+
+## Issues with Models
+1. **Model Not Defined Correctly:**
+   - Encountered `MissingSchemaError: Schema hasn't been registered for model "books".`
+   - Solution: Ensured all models were defined and exported correctly in `models/` directory.
+
+2. **Incorrect References in Models:**
+   - References to other models were incorrect (e.g., using `ref: "books"` instead of `ref: "Book"`).
+   - Solution: Corrected the references to match the model names.
+
+## Issues with APIs
+1. **TypeError: Book is not a constructor:**
+   - Occurred due to incorrect import or usage of the `Book` model.
+   - Solution: Verified the import statement and ensured the model was correctly instantiated.
+
+2. **Routes Not Working:**
+   - `Cannot POST /api/v1/update-book`
+   - Solution: Corrected the route definition from `router.put("update-book",...)` to `router.put("/update-book",...)`.
+
+3. **Spelling Mistakes in Methods:**
+   - `findByIdAndUpadate` should be `findByIdAndUpdate`.
+   - Solution: Fixed spelling errors in mongoose method names.
+
+4. **Sorting Issues:**
+   - Incorrect sort field `createdAT`.
+   - Solution: Corrected to `createdAt`.
+
+## General Tips
+- **Consistent Naming:** Ensure model names and references are consistent.
+- **Error Handling:** Implement robust error handling to debug issues effectively.
+- **Documentation:** Keep API documentation updated to reflect correct endpoints and usage.
