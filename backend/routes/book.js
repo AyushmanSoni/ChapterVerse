@@ -60,7 +60,7 @@ try {
 }
 });
 //get all books api
-router.get("/get-al-books", async (req,res) => {
+router.get("/get-all-books", async (req,res) => {
     try {
         const books = await Book.find().sort({createdAT: -1});
         return res.json({
