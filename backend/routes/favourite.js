@@ -32,7 +32,7 @@ router.put("/remove-book-from-favourites", authenticateToken, async (req,res)=> 
     }
 });
 //get favourite books of perticular user
-router.get("/get-fovourite-books", authenticateToken, async (req,res)=> {
+router.get("/get-favourite-books", authenticateToken, async (req,res)=> {
     try {
         const {id} = req.headers;
         const userData = await User.findById(id).populate("favourites");
@@ -42,6 +42,7 @@ router.get("/get-fovourite-books", authenticateToken, async (req,res)=> {
             data: favouriteBooks,
         });
     } catch (error) {
+        console.log(error);
         return res.status(500).json({message: "An error occured"});
     }
 });

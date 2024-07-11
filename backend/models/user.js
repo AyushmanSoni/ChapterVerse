@@ -30,12 +30,12 @@ const userSchema = new mongoose.Schema({
     },
     favourites:[
         {type: mongoose.Types.ObjectId,
-        ref: "books",
+        ref: "Book",
         },
     ],
     cart:[
         {type: mongoose.Types.ObjectId,
-        ref: "books",
+        ref: "Book",
         },
     ],
     orders:[
