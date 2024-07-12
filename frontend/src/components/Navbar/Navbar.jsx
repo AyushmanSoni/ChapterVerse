@@ -22,11 +22,11 @@ const Navbar = () => {
     <div className='flex bg-[#F3F8F9] text-grey px-24 py-4 itmes-center justify-between'> 
         <div className='flex items-center '>
             <img className='h-10 me-4' src="https://www.svgrepo.com/show/53217/book-and-glasses.svg" alt="logo" />
-            <h1 className='text-2xl font-semibold'>ChapterVerse</h1>
+            <h1 className='text-2xl font-semibold text-[#086D8A]'>ChapterVerse</h1>
         </div>
-        <div className='nav-links-chapterverse flex gap-16 pt-2'>
+        <div className='nav-links-chapterverse flex gap-16 pt-2 text-gray-500 '>
             {links.map((items,i)=> 
-            <div key={i}>
+            <div  key={i}>
                 {items.title}
             </div>
             )}
