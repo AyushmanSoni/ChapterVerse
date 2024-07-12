@@ -2,7 +2,11 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className='px-24 py-4 text bg-[#086D8A] text-white'>
+        <h1 className='text-0.5xl font-medium text-center'>
+            &copy; 2024, Made with love By Ayushman
+        </h1>
+    </div>
   )
 }
 
