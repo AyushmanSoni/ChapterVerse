@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     const links =[
         {title: "Home",
@@ -27,16 +27,17 @@ const Navbar = () => {
         </div>
         <div className='nav-links-chapterverse flex gap-16 pt-2 text-gray-500 '>
             {links.map((items,i)=> 
-            <div  key={i}>
+            <Link to={items.link}
+             key={i}>
                 {items.title}
-            </div>
+            </Link>
             )}
         </div>
         <div className='flex gap-8'>
-        <button className='px-4 py-2 text-[#086D8A] hover:text-[#075A71]'>
-            SignIn</button>
-        <button className='px-4 py-2v bg-[#086D8A] text-white border rounded-lg
-         hover:bg-[#075A71]'>SignUp</button>
+        <Link to="/Login" className='px-4 py-2 text-[#086D8A] hover:text-[#075A71]'>
+            LogIn</Link>
+        <Link to="/SignUp" className='px-4 py-2v bg-[#086D8A] text-white border rounded-lg
+         hover:bg-[#075A71]'>SignUp</Link>
         </div>
     </div>
 
