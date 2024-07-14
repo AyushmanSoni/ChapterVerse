@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
+import Bookdetails from './components/Bookdetails/Bookdetails';
 const App = () => {
   return (
     <div>
@@ -20,7 +21,7 @@ const App = () => {
           <Route path="/SignUp" element={<SignUp/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/profile" element={<Profile/>}/>
-          <Route path="book-details/:id"/>
+          <Route path="/book-details/:id" element= {<Bookdetails/>} />
         </Routes>
         <Footer/>
       </Router>

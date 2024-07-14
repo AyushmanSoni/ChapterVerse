@@ -95,7 +95,7 @@ router.get("/get-book-by-id/:id", async (req,res)=>{
             data: book,
         })
     } catch (error) {
-        // console.log(error);
+        console.log(error);
         return res.status(500).json({message: "An error occured"});
     }
 });
