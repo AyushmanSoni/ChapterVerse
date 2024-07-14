@@ -18,7 +18,7 @@ const Bookcard = ({ data }) => {
     //     </div>
     //   </div>
     // </Link>
-    <Link to={`/book/${data.id}`} className="block">
+    <Link to={`/book-details/${data.id}`} className="block">
     <div className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
       <div className="rounded-lg flex items-center justify-center">
         <img src={data.url} alt="/" className="h-25[vh]" />
