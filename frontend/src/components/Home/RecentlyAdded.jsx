@@ -22,7 +22,7 @@ const RecentlyAdded = () => {
   return (
     <div className='mt-16 px-4'>
       <h4 className='text-4xl font-medium text-[#032B37]'>Recently Added books</h4>
-      <div className='my-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4'>
+      <div className='my-8 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4'>
         {Data.map((item, index) => (
           <div key={index}>
             <Bookcard data={item} />
