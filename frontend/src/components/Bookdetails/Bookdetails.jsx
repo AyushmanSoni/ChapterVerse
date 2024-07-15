@@ -51,14 +51,15 @@ const Bookdetails = () => {
         </div>
         <div className='p-4 w-3/6 bg-white'>
         <h1 className='text-4xl text-[#032B37] font-semibold'>{book.title}</h1>
-        <p className="text-lg text-[#086D8A] mt-2 font-medium">by {book.author}</p>
-        <p className="mt-4 text-gray-600">{book.desc}</p>
-        <p className='flex mt-4 items-center justify-start text-zinc-600'>
-            <GrLanguage className="me-3"/>{book.language}
-        </p>
-        <p className='mt-4 text-[#032B37] text-2xl font-semibold'>
+        <p className="text-lg text-[#086D8A] mt-4 font-medium">by {book.author}</p>
+        <p className='mt-8 text-[#032B37] text-3xl font-bold flex items-center'>
             <FaRupeeSign className=''/> {book.price}{" "}
         </p>
+        <p className="mt-8 text-gray-600">{book.desc}</p>
+        <p className='flex mt-4 items-center justify-start text-zinc-600'>
+            <GrLanguage className="mr-1"/>{book.language}
+        </p>
+        
         </div>
     </div>
   );
