@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SignUp = () => {
@@ -6,7 +7,7 @@ const SignUp = () => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    address: ''
   });
 
   const [error, setError] = useState('');
@@ -17,11 +18,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
 
     try {
       const response = await axios.post('http://localhost:1000/api/v1/signup', formData);
@@ -40,7 +36,7 @@ const SignUp = () => {
         {error && <div className="mb-4 text-red-500">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="name">Name</label>
+            <label className="block text-gray-700 mb-2" htmlFor="name">Userame</label>
             <input
               type="text"
               id="name"
@@ -76,12 +72,12 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="confirmPassword">Confirm Password</label>
+            <label className="block text-gray-700 mb-2" htmlFor="address">Address</label>
             <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
+              type="text"
+              id="address"
+              name="address"
+              value={formData.address}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#086D8A]"
               required
@@ -94,6 +90,9 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
+        <div className="mt-6 text-center">
+          <p className="text-gray-700">Already have an account? <Link to="/LogIn" className="text-[#086D8A] hover:underline">Log In</Link></p>
+        </div>
       </div>
     </div>
   );
