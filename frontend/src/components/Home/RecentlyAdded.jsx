@@ -21,7 +21,7 @@ const RecentlyAdded = () => {
   }, []); // Empty dependency array to run the effect only once
 
   return (
-    <div className='mt-16 px-4'>
+    <div className='mt-16 px-4 '>
       <h4 className='text-4xl font-medium text-[#032B37]'>Recently Added books</h4>
       {!Data && 
         <div className='flex items-center justify-center my-8'>
