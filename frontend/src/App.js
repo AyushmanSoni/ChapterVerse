@@ -12,8 +12,8 @@ import Bookdetails from './components/Bookdetails/Bookdetails';
 const App = () => {
   return (
     <div>
-
-        <Navbar/>
+      
+      <Navbar/>
         <Routes>
           <Route exact path="/" element={<Home/>}/>
           <Route path="/all-books" element={<AllBooks/>}/>
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/book-details/:id" element= {<Bookdetails/>} />
         </Routes>
         <Footer/>
-
+        
     </div>
   )
 }
