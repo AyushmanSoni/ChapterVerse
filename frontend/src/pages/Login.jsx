@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { authActions } from '../store/auth';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +11,8 @@ const Login = () => {
   });
 
   const [error, setError] = useState('');
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -26,7 +29,14 @@ const Login = () => {
         // console.log(formData);
         const response = await axios.post('http://localhost:1000/api/v1/sign-in', formData);
         // alert(response.data.message);
-        // console.log(response.data);
+        console.log(response.data);
+        dispatch(authActions.login());
+        dispatch(authActions.changeRole(response.data.role));
+        //console.log(response.data.id);
+        localStorage.setItem("id",response.data.id);
+        localStorage.setItem("token",response.data.token);
+        localStorage.setItem("role",response.data.role);
+        navigate("/profile")
         if (response.data && response.data.message) {
           alert(response.data.message);
         } else {

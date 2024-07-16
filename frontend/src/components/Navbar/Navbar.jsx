@@ -44,14 +44,14 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className='flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 md:ml-auto'>
+        {isLoggedIn === false && <div className='flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 md:ml-auto'>
           <Link to='/Login' className='px-4 py-2 text-[#086D8A] hover:text-[#075A71]'>
             LogIn
           </Link>
           <Link to='/SignUp' className='px-4 py-2 bg-[#086D8A] text-white border rounded-lg hover:bg-[#075A71]'>
             SignUp
           </Link>
-        </div>
+        </div>}
       </div>
     </div>
   );
