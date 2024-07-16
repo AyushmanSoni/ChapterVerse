@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
     address: ''
@@ -13,15 +13,25 @@ const SignUp = () => {
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    // setFormData({ ...formData, [e.target.name]: e.target.value });
+    const {name, value} = e.target;
+    console.log(name, value);
+    setFormData({...formData, [name]:value});
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:1000/api/v1/signup', formData);
-      console.log(response.data);
+      if(formData.username==="" || formData.email==="" || formData.password==="" || formData.address===""){
+        alert("All fields are required");
+      }
+      else{
+        console.log(formData);
+        const response = await axios.post('http://localhost:1000/api/v1/sign-up', formData);
+        console.log(response.data);
+      }
+      
       // Handle successful sign up (e.g., redirect to login page)
     } catch (err) {
       console.error('Error during sign up:', err);
@@ -40,8 +50,8 @@ const SignUp = () => {
             <input
               type="text"
               id="name"
-              name="name"
-              value={formData.name}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#086D8A]"
               required
@@ -86,6 +96,7 @@ const SignUp = () => {
           <button
             type="submit"
             className="w-full bg-[#086D8A] text-white py-2 rounded-lg hover:bg-[#075A71] transition duration-300"
+            // onClick={handleSubmit}
           >
             Sign Up
           </button>
