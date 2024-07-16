@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { GrAlert } from 'react-icons/gr';
+
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +37,8 @@ const SignUp = () => {
       // Handle successful sign up (e.g., redirect to login page)
     } catch (err) {
       console.error('Error during sign up:', err);
-      setError('Sign up failed. Please try again.');
+      // setError('Sign up failed. Please try again.');
+      alert(err.response.data.message);
     }
   };
 

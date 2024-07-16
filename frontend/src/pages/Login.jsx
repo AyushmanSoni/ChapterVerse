@@ -1,28 +1,44 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
 
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:1000/api/v1/login', formData);
-      console.log(response.data);
-      // Handle successful login (e.g., redirect to profile or home page)
+      if(formData.username==="" || formData.password==="" ){
+        alert("All fields are required");
+      }
+      else{
+        // console.log(formData);
+        const response = await axios.post('http://localhost:1000/api/v1/sign-in', formData);
+        // alert(response.data.message);
+        // console.log(response.data);
+        if (response.data && response.data.message) {
+          alert(response.data.message);
+        } else {
+          alert('Login successful');
+        }
+        //navigate("/LogIn")
+      }
+      
+      // Handle successful sign up (e.g., redirect to login page)
     } catch (err) {
       console.error('Error during login:', err);
+      alert(err.response.data.message);
       setError('Login failed. Please check your email and password.');
     }
   };
@@ -38,8 +54,8 @@ const Login = () => {
             <input
               type="text"
               id="name"
-              name="name"
-              value={formData.name}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#086D8A]"
               required
