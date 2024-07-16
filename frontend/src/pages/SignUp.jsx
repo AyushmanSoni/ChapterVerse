@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { GrAlert } from 'react-icons/gr';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ const SignUp = () => {
     password: '',
     address: ''
   });
-
+  const navigate = useNavigate()
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -29,7 +30,8 @@ const SignUp = () => {
       else{
         console.log(formData);
         const response = await axios.post('http://localhost:1000/api/v1/sign-up', formData);
-        console.log(response.data);
+        alert(response.data.message);
+        navigate("/LogIn")
       }
       
       // Handle successful sign up (e.g., redirect to login page)
