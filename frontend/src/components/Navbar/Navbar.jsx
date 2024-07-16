@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGripLines } from 'react-icons/fa';
-// import {useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -11,8 +11,11 @@ const Navbar = () => {
     { title: 'Cart', link: '/cart' },
     { title: 'Profile', link: '/profile' },
   ];
-  // const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn);
   // console.log(isLoggedIn);
+  if(isLoggedIn == false){
+    links.splice(2,2);
+  }
   return (
     <div className='bg-[#F3F8F9] text-grey px-4 md:px-24 py-4'>
       <div className='flex items-center justify-between'>
