@@ -6,11 +6,16 @@ import { GrLanguage } from 'react-icons/gr';
 import { FaRupeeSign } from 'react-icons/fa';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import Loader from '../Loader/Loader';
+import { useSelector } from 'react-redux';
 
 const Bookdetails = () => {
   const { id } = useParams(); // get the book id from the URL
   const [book, setBook] = useState(null);
 
+  const isLoggedIn = useSelector((state)=> state.auth.isLoggedIn);
+  const role= useSelector((state)=> state.auth.role);
+  console.log(isLoggedIn);
+  console.log(role);
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
