@@ -75,3 +75,61 @@ The error was due to an incorrect import of the `User` model in my route file.
 - **Consistent Naming:** Ensure model names and references are consistent.
 - **Error Handling:** Implement robust error handling to debug issues effectively.
 - **Documentation:** Keep API documentation updated to reflect correct endpoints and usage.
+
+# Summary of Errors and Challenges Faced
+
+## 1. Navbar Link Hover Animation
+- **Error**: CSS hover effect not working correctly.
+- **Solution**: Ensured correct CSS syntax and proper class assignments in `index.css`.
+- **Challenge**: Making sure the underline animation effect appears smoothly.
+- **Solution**: Applied transition properties correctly for the hover effect.
+
+## 2. Book Details Page
+- **Error**: Incorrect usage of the conditional check for loading state.
+- **Solution**: Used the correct `book` state for checking data availability.
+- **Error**: The "Add to Cart" button was not displayed correctly.
+- **Solution**: Adjusted the button's styling and layout to align correctly.
+- **Error**: Like button not placed at the top right corner.
+- **Solution**: Used `absolute` positioning to place the like button correctly.
+- **Challenge**: Ensuring the `FaHeart` icon is positioned correctly on the book image.
+- **Solution**: Used `relative` and `absolute` positioning for accurate placement.
+
+## 3. Undefined Output in `isLoggedIn`
+- **Error**: Typo in the selector `isLoggenIn` instead of `isLoggedIn`.
+- **Solution**: Corrected the typo in the `useSelector` call.
+- **Error**: Redux state not properly reflecting user login status.
+- **Solution**: Debugged and ensured proper state management in the Redux store.
+
+## 4. Fetching Book Details
+- **Error**: API call not returning expected data.
+- **Solution**: Corrected the API endpoint URL and ensured the server was running.
+- **Challenge**: Handling errors when the API call fails.
+- **Solution**: Added proper error handling in the `fetchBookDetails` function.
+
+## 5. Styling and Responsiveness
+- **Error**: Components not responsive on different screen sizes.
+- **Solution**: Used Tailwind CSS classes to ensure responsive design.
+- **Challenge**: Maintaining consistent styling across different components.
+- **Solution**: Defined a common theme and reusable CSS classes for consistency.
+
+## 6. Conditional Rendering
+- **Error**: Incorrect conditional checks leading to rendering issues.
+- **Solution**: Used proper conditional logic to check for data availability before rendering components.
+
+## 7. Tailwind CSS Integration
+- **Error**: Custom styles not applying correctly.
+- **Solution**: Ensured Tailwind CSS classes were correctly applied and configured.
+- **Challenge**: Overriding default Tailwind CSS styles.
+- **Solution**: Used custom classes and extended the Tailwind configuration to meet specific requirements.
+
+## 8. Component Layout Issues
+- **Error**: Flexbox not aligning items correctly.
+- **Solution**: Used appropriate Tailwind CSS flexbox utilities for layout adjustments.
+- **Challenge**: Creating a consistent layout across different screen sizes.
+- **Solution**: Applied responsive design principles and Tailwind CSS classes for different breakpoints.
+
+## 9. Import and Dependency Issues
+- **Error**: Incorrect import statements causing module errors.
+- **Solution**: Ensured all necessary modules and components were correctly imported.
+- **Challenge**: Managing dependencies and ensuring all required packages are installed.
+- **Solution**: Used `npm` or `yarn` to manage and install dependencies correctly.
