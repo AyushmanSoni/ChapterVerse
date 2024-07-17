@@ -5,7 +5,7 @@ import {FaSignOutAlt } from 'react-icons/fa';
 
 const Sidebar = ({data}) => {
   return (
-    <div className='bg-white p-4 rounded flex flex-col items-center justify-between h-[80%]'>
+    <div className='bg-white p-4 rounded flex flex-col items-center justify-between h-[100%]'>
         <div className='flex items-center flex-col justify-center'>{""}
         <img src="https://cdn-icons-png.freepik.com/512/6596/6596121.png" className='h-[12vh]'/>
         <p className='mt-3 text-xl font-semibold text-[#086D8A]'>{data.username}</p>
