@@ -13,6 +13,7 @@ import Favourites from './components/Profile/Favourites'; // Make sure this impo
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/auth';
 import OrderHistory from './components/Profile/OrderHistory';
+import Settings from './components/Profile/Settings';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />}>
           <Route index element={<Favourites />} />
           <Route path="/profile/orderHistory" element={<OrderHistory />} />
+          <Route path="/profile/settings" element={<Settings />} />
         </Route>
         <Route path="/book-details/:id" element={<Bookdetails />} />
       </Routes>
