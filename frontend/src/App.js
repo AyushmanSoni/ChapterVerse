@@ -12,6 +12,7 @@ import Bookdetails from './components/Bookdetails/Bookdetails';
 import Favourites from './components/Profile/Favourites'; // Make sure this import is correct
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/auth';
+import OrderHistory from './components/Profile/OrderHistory';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />}>
           <Route index element={<Favourites />} />
+          <Route path="/profile/orderHistory" element={<OrderHistory />} />
         </Route>
         <Route path="/book-details/:id" element={<Bookdetails />} />
       </Routes>
