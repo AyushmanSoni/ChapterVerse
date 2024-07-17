@@ -5,6 +5,7 @@ import axios from 'axios';
 import { GrLanguage } from 'react-icons/gr';
 import { FaRupeeSign } from 'react-icons/fa';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import Loader from '../Loader/Loader';
 
 const Bookdetails = () => {
   const { id } = useParams(); // get the book id from the URL
@@ -25,12 +26,13 @@ const Bookdetails = () => {
     fetchBookDetails();
   }, [id]);
 
-  if (!book) {
-    return <div>Loading...</div>;
-  }
+  // if (!book) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
-    <div className='px-4 py-4 bg-[#F3F8F9] flex md:flex-row flex-col gap-8'>
+    <>
+    {book && (<div className='px-4 py-4 bg-[#F3F8F9] flex md:flex-row flex-col gap-8'>
       <div className='relative bg-[#F3F8F9] p-4 lg:h-[88vh] h-[70vh] md:w-3/6 w-full flex items-center justify-center'>
         <img src={book.url} alt={book.title} className='lg:h-[70vh] h-[50vh]' />
         <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
@@ -54,6 +56,13 @@ const Bookdetails = () => {
         </div>
       </div>
     </div>
+  )}
+  {!book && 
+   <div className='h-screen bg-[#F3F8F9] flex items-center justify-center'>
+    <Loader/>
+   </div>
+  }
+    </>
   );
 };
 
