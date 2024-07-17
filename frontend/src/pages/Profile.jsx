@@ -8,12 +8,11 @@ const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
   
-  const headers = {
-    id: localStorage.getItem('id'),
-    authorization: `Bearer ${localStorage.getItem('token')}`,
-  };
-
   useEffect(() => {
+    const headers = {
+      id: localStorage.getItem('id'),
+      authorization: `Bearer ${localStorage.getItem('token')}`,
+    };
     const fetchProfile = async () => {
       try {
         const response = await axios.get('http://localhost:1000/api/v1/get-user-info', { headers });
