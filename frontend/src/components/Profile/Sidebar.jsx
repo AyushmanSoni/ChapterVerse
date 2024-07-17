@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sidebar = () => {
   return (
-    <div>Sidebar</div>
+    <div className='bg-white p-4 rounded'>Sidebar</div>
   )
 }
 
