@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GrLanguage } from 'react-icons/gr';
 import { FaRupeeSign } from 'react-icons/fa';
+import { FaHeart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Bookdetails = () => {
   const { id } = useParams(); // get the book id from the URL
@@ -48,6 +50,9 @@ const Bookdetails = () => {
     <div className='px-4 py-4 bg-[#F3F8F9]  flex md:flex-row flex-col gap-8'>
         <div  className='bg-[#F3F8F9] p-4 lg:h-[88vh] h-[70vh] md:w-3/6 w-full flex  items-center justify-center'>
         <img src={book.url} alt="/" className='lg:h-[70vh] h-[50vh]' />
+        <div>
+          <button><FaHeart /></button>
+        </div>
         </div>
         <div className='p-4   w-full lg:w-3/6 bg-white'>
         <h1 className='text-4xl text-[#032B37] font-semibold'>{book.title}</h1>
@@ -59,7 +64,11 @@ const Bookdetails = () => {
         <p className='flex mt-4 items-center justify-start text-zinc-600'>
             <GrLanguage className="mr-1"/>{book.language}
         </p>
-        
+        <div className='mt-4 flex flex-row'>
+          <button className='bg-[#086D8A] rounded text-xl p-3 text-white flex items-center'>
+            <FaShoppingCart className='mr-2' /> Add to Cart
+          </button>
+        </div>
         </div>
     </div>
   );

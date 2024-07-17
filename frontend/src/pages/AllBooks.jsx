@@ -18,7 +18,7 @@ const AllBooks = () => {
     fetchBooks();
   }, []);
   return (
-    <div className='px-4 py-8 bg-[#F3F8F9]'>
+    <div className='px-4 py-8 md:px-24 bg-[#F3F8F9]'>
       <h4 className='text-4xl font-medium text-[#032B37]'>All Books</h4>
       {!Data && 
         <div className='flex items-center justify-center my-8'>
