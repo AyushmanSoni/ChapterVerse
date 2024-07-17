@@ -12,7 +12,6 @@ const Navbar = () => {
     { title: 'Profile', link: '/profile' },
   ];
   const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn);
-  // console.log(isLoggedIn);
   if(isLoggedIn == false){
     links.splice(2,2);
   }
@@ -38,7 +37,7 @@ const Navbar = () => {
       >
         <div className='flex flex-col md:flex-row md:gap-16 pt-2 text-gray-500 justify-center w-full md:w-auto'>
           {links.map((items, i) => (
-            <Link to={items.link} key={i} className='px-4 py-2 md:px-0'>
+            <Link to={items.link} key={i} className='px-4 py-2 md:px-0 nav-link'>
               {items.title}
             </Link>
           ))}
