@@ -36,13 +36,22 @@ const Bookdetails = () => {
   // if (!book) {
   //   return <div>Loading...</div>;
   // }
-
+  const headers = {
+    id: localStorage.getItem('id'),
+    authorization: `Bearer ${localStorage.getItem('token')}`,
+    bookid: id,
+  };
+  const handleFavourite = async ()=>{
+    const response = await axios.put("http://localhost:1000/api/v1/add-book-to-favourites",{},{headers});
+    alert(response.data.message);
+  }
   return (
     <>
     {book && (<div className='px-4 py-4 bg-[#F3F8F9] flex md:flex-row flex-col gap-8'>
       <div className='relative bg-[#F3F8F9] p-4 lg:h-[88vh] h-[70vh] md:w-3/6 w-full flex items-center justify-center'>
         <img src={book.url} alt={book.title} className='lg:h-[70vh] h-[50vh]' />
-        {isLoggedIn ===true && role === "user" && <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
+        {isLoggedIn ===true && role === "user" && <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3' onClick={handleFavourite}
+        >
           <FaHeart />
         </button>}
         {isLoggedIn ===true && role === "admin" && <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
