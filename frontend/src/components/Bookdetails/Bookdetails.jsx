@@ -45,6 +45,10 @@ const Bookdetails = () => {
     const response = await axios.put("http://localhost:1000/api/v1/add-book-to-favourites",{},{headers});
     alert(response.data.message);
   }
+  const handleCart = async ()=>{
+    const response = await axios.put("http://localhost:1000/api/v1/add-to-cart",{},{headers});
+    alert(response.data.message);
+  }
   return (
     <>
     {book && (<div className='px-4 py-4 bg-[#F3F8F9] flex md:flex-row flex-col gap-8'>
@@ -69,7 +73,7 @@ const Bookdetails = () => {
           <GrLanguage className="mr-1" />{book.language}
         </p>
         {isLoggedIn ===true && role === "user" && <div className='mt-4 flex flex-row gap-4'>
-          <button className='bg-[#086D8A] rounded text-xl p-3 text-white flex items-center'>
+          <button className='bg-[#086D8A] rounded text-xl p-3 text-white flex items-center hover:bg-[#075A71]' onClick={handleCart}>
             <FaShoppingCart className='mr-2' /> Add to Cart
           </button>
         </div>}
