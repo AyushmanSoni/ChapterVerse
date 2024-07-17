@@ -7,6 +7,8 @@ import { FaRupeeSign } from 'react-icons/fa';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import Loader from '../Loader/Loader';
 import { useSelector } from 'react-redux';
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 const Bookdetails = () => {
   const { id } = useParams(); // get the book id from the URL
@@ -14,8 +16,8 @@ const Bookdetails = () => {
 
   const isLoggedIn = useSelector((state)=> state.auth.isLoggedIn);
   const role= useSelector((state)=> state.auth.role);
-  console.log(isLoggedIn);
-  console.log(role);
+  // console.log(isLoggedIn);
+  // console.log(role);
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
@@ -40,9 +42,12 @@ const Bookdetails = () => {
     {book && (<div className='px-4 py-4 bg-[#F3F8F9] flex md:flex-row flex-col gap-8'>
       <div className='relative bg-[#F3F8F9] p-4 lg:h-[88vh] h-[70vh] md:w-3/6 w-full flex items-center justify-center'>
         <img src={book.url} alt={book.title} className='lg:h-[70vh] h-[50vh]' />
-        <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
+        {isLoggedIn ===true && role === "user" && <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
           <FaHeart />
-        </button>
+        </button>}
+        {isLoggedIn ===true && role === "admin" && <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
+          <MdEdit />
+        </button>}
       </div>
       <div className='p-4 w-full lg:w-3/6 bg-white'>
         <h1 className='text-4xl text-[#032B37] font-semibold'>{book.title}</h1>
@@ -54,11 +59,16 @@ const Bookdetails = () => {
         <p className='flex mt-4 items-center justify-start text-zinc-600'>
           <GrLanguage className="mr-1" />{book.language}
         </p>
-        <div className='mt-4 flex flex-row gap-4'>
+        {isLoggedIn ===true && role === "user" && <div className='mt-4 flex flex-row gap-4'>
           <button className='bg-[#086D8A] rounded text-xl p-3 text-white flex items-center'>
             <FaShoppingCart className='mr-2' /> Add to Cart
           </button>
-        </div>
+        </div>}
+        {isLoggedIn ===true && role === "admin" && <div className='mt-4 flex flex-row gap-4'>
+          <button className='bg-red-700 rounded text-xl p-3 text-white flex items-center'>
+            <MdDelete  className='mr-2' /> Delete Book
+          </button>
+        </div>}
       </div>
     </div>
   )}
