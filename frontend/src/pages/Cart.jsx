@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Loader from '../components/Loader/Loader';
 import axios from 'axios';
 import { AiFillDelete } from 'react-icons/ai';
-// import { FaRupeeSign } from 'react-icons/fa';
 import { FaIndianRupeeSign } from "react-icons/fa6";
 
 const Cart = () => {
   const [Cart, setCart] = useState([]);
   const [Total, setTotal] = useState(0);
+  const [isLoading, setIsLoading] = useState(true); // Add a loading state
+
   const headers = {
     id: localStorage.getItem('id'),
     authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -26,39 +27,38 @@ const Cart = () => {
           total += item.price;
         });
         setTotal(total);
+        setIsLoading(false); // Set loading to false after fetching data
       } catch (error) {
         console.error('Error fetching cart data:', error);
+        setIsLoading(false); // Set loading to false even if there's an error
       }
     };
     fetch();
-  }, [Cart]); // Run the effect only once
+  }, []); // Run the effect only once
 
-  // const deleteItem = async (id) => {
-  //   try {
-  //     await axios.delete(`http://localhost:1000/api/v1/remove-from-cart/${id}`, { headers });
-  //     setCart(Cart.filter(item => item._id !== id));
-  //     setTotal(Total - Cart.find(item => item._id === id).price);
-  //   } catch (error) {
-  //     console.error('Failed to delete item:', error);
-  //   }
-  // };
   const deleteItem = async (bookid) => {
-    const response = await axios.put(`http://localhost:1000/api/v1/remove-from-cart/${bookid}`,{}, { headers }
-    );
-    alert(response.data.message);
+    try {
+      const response = await axios.put(`http://localhost:1000/api/v1/remove-from-cart/${bookid}`, {}, { headers });
+      alert(response.data.message);
+      setCart(Cart.filter(item => item._id !== bookid));
+      setTotal(Total - Cart.find(item => item._id === bookid).price);
+    } catch (error) {
+      console.error('Failed to delete item:', error);
+    }
   };
+
   return (
     <div className='bg-[#F3F8F9] px-12 h-screen py-8'>
-      {!Cart.length && <Loader />}
-      {Cart.length === 0 && (
+      {isLoading && <Loader />} {/* Show loader only when loading */}
+      {!isLoading && Cart.length === 0 && (
         <div className='h-screen'>
           <div className='h-[100%] flex items-center justify-center flex-col'>
             <h1 className='text-5xl lg:text-6xl font-semibold text-zinc-400'>Empty Cart</h1>
-            <img src="" alt="" className='lg:h-[50vh]' />
+            <img src="https://www.eghoaf.com/assets/themes/egho-af/zonan/img/empty-cart.png" alt="" className='lg:h-[50vh]' />
           </div>
         </div>
       )}
-      {Cart.length > 0 && (
+      {!isLoading && Cart.length > 0 && (
         <>
           <h1 className='text-3xl font-semibold text-[#086D8A]'>Your Cart</h1>
           {Cart.map((item, i) => (
@@ -72,8 +72,8 @@ const Cart = () => {
                 <p className='text-normal text-zinc-700 mt-2 md:hidden block'>{item.desc.slice(0, 100)}...</p>
               </div>
               <div className='flex mt-4 w-full md:w-auto items-center justify-between'>
-              <p className=' text-[#032B37] text-3xl font-semibold flex items-center'>
-                <FaIndianRupeeSign className='' /> {item.price}
+                <p className=' text-[#032B37] text-3xl font-semibold flex items-center'>
+                  <FaIndianRupeeSign className='' /> {item.price}
                 </p>
                 <button className='bg-red-100 text-red-700 border border-red-700 rounded p-2 ms-12'
                   onClick={() => deleteItem(item._id)}
