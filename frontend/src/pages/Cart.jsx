@@ -54,7 +54,7 @@ const Cart = () => {
         <div className='h-screen'>
           <div className='h-[100%] flex items-center justify-center flex-col'>
             <h1 className='text-5xl lg:text-6xl font-semibold text-zinc-400'>Empty Cart</h1>
-            <img src="https://www.eghoaf.com/assets/themes/egho-af/zonan/img/empty-cart.png" alt="" className='lg:h-[50vh]' />
+            <img src="https://www.eghoaf.com/assets/themes/egho-af/zonan/img/empty-cart.png" alt="Empty Cart" className='lg:h-[50vh]' />
           </div>
         </div>
       )}
@@ -62,9 +62,9 @@ const Cart = () => {
         <>
           <h1 className='text-3xl font-semibold text-[#086D8A]'>Your Cart</h1>
           {Cart.map((item, i) => (
-            <div className='w-full my-4 rounded flex flex-col md:flex-row p-4 bg-white border  border-[#086D8A] justify-between items-center'
+            <div className='w-full my-4 rounded flex flex-col md:flex-row p-4 bg-white border border-[#086D8A] justify-between items-center'
               key={i}>
-              <img src={item.url} alt="/" className='h-[20vh] md:h-[10vh] object-cover' />
+              <img src={item.url} alt={item.title} className='h-[20vh] md:h-[10vh] object-cover' />
               <div className='w-full md:w-auto'>
                 <h1 className='text-2xl text-[#086D8A] font-semibold text-start mt-2 md:mt-0'>{item.title}</h1>
                 <p className='text-normal text-zinc-700 mt-2 hidden lg:block'>{item.desc.slice(0, 100)}...</p>
@@ -72,7 +72,7 @@ const Cart = () => {
                 <p className='text-normal text-zinc-700 mt-2 md:hidden block'>{item.desc.slice(0, 100)}...</p>
               </div>
               <div className='flex mt-4 w-full md:w-auto items-center justify-between'>
-                <p className=' text-[#032B37] text-3xl font-semibold flex items-center'>
+                <p className='text-[#032B37] text-3xl font-semibold flex items-center'>
                   <FaIndianRupeeSign className='' /> {item.price}
                 </p>
                 <button className='bg-red-100 text-red-700 border border-red-700 rounded p-2 ms-12'
@@ -82,7 +82,25 @@ const Cart = () => {
             </div>
           ))}
           <div className='w-full flex justify-end p-4'>
-            <h2 className='text-zinc-100 text-3xl font-semibold'>Total: {Total}</h2>
+            {/* <h2 className='text-[#032B37] text-3xl font-semibold'>Total: <FaIndianRupeeSign className='' /> {Total}</h2> */}
+          </div>
+          <div className='mt-4 w-full flex items-center justify-end'>
+            <div className='p-4 bg-white rounded'>
+              <h1 className='text-3xl text-[#032B37] font-semibold'>Total Amount</h1>
+              <div className='mt-3 flex items-center justify-between text-xl text-[#086D8A]'>
+                <h2>{Cart.length} books</h2>
+                <h2>
+                  <FaIndianRupeeSign className='' /> {Total}
+                </h2>
+              </div>
+              <div className='w-[100%] mt-3'>
+                <button className='bg-[#086D8A] text-white rounded px-4 py-2 flex justify-center w-full font-semibold'
+                  // onClick={PlaceOrder}
+                >
+                  Place Your Order
+                </button>
+              </div>
+            </div>
           </div>
         </>
       )}
