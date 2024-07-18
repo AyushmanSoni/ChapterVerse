@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Loader from '../components/Loader/Loader';
 import axios from 'axios';
 import { AiFillDelete } from 'react-icons/ai';
+// import { FaRupeeSign } from 'react-icons/fa';
+import { FaIndianRupeeSign } from "react-icons/fa6";
 
 const Cart = () => {
   const [Cart, setCart] = useState([]);
@@ -42,7 +44,7 @@ const Cart = () => {
   };
 
   return (
-    <div>
+    <div className='bg-[#F3F8F9] px-12 h-screen py-8'>
       {!Cart.length && <Loader />}
       {Cart.length === 0 && (
         <div className='h-screen'>
@@ -54,21 +56,21 @@ const Cart = () => {
       )}
       {Cart.length > 0 && (
         <>
-          <h1 className=''>Your Cart</h1>
+          <h1 className='text-3xl font-semibold text-[#086D8A]'>Your Cart</h1>
           {Cart.map((item, i) => (
-            <div className='w-full my-4 rounded flex flex-col md:flex-row p-4 bg-zinc-500 justify-between items-center'
+            <div className='w-full my-4 rounded flex flex-col md:flex-row p-4 bg-white border  border-[#086D8A] justify-between items-center'
               key={i}>
               <img src={item.url} alt="/" className='h-[20vh] md:h-[10vh] object-cover' />
               <div className='w-full md:w-auto'>
-                <h1 className='text-2xl text-zinc-100 font-semibold text-start mt-2 md:mt-0'>{item.title}</h1>
-                <p className='text-normal text-zinc-300 mt-2 hidden lg:block'>{item.desc.slice(0, 100)}...</p>
-                <p className='text-normal text-zinc-300 mt-2 hidden md:block lg:hidden'>{item.desc.slice(0, 65)}...</p>
-                <p className='text-normal text-zinc-300 mt-2 md:hidden block'>{item.desc.slice(0, 100)}...</p>
+                <h1 className='text-2xl text-[#086D8A] font-semibold text-start mt-2 md:mt-0'>{item.title}</h1>
+                <p className='text-normal text-zinc-700 mt-2 hidden lg:block'>{item.desc.slice(0, 100)}...</p>
+                <p className='text-normal text-zinc-700 mt-2 hidden md:block lg:hidden'>{item.desc.slice(0, 65)}...</p>
+                <p className='text-normal text-zinc-700 mt-2 md:hidden block'>{item.desc.slice(0, 100)}...</p>
               </div>
               <div className='flex mt-4 w-full md:w-auto items-center justify-between'>
-                <h2 className='text-zinc-100 text-3xl font-semibold flex'>
-                  {item.price}
-                </h2>
+              <p className=' text-[#032B37] text-3xl font-semibold flex items-center'>
+                <FaIndianRupeeSign className='' /> {item.price}
+                </p>
                 <button className='bg-red-100 text-red-700 border border-red-700 rounded p-2 ms-12'
                   onClick={() => deleteItem(item._id)}
                 ><AiFillDelete /></button>

@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GrLanguage } from 'react-icons/gr';
-import { FaRupeeSign } from 'react-icons/fa';
+
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import Loader from '../Loader/Loader';
 import { useSelector } from 'react-redux';
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 
 const Bookdetails = () => {
   const { id } = useParams(); // get the book id from the URL
@@ -66,7 +67,7 @@ const Bookdetails = () => {
         <h1 className='text-4xl text-[#032B37] font-semibold'>{book.title}</h1>
         <p className="text-lg text-[#086D8A] mt-4 font-medium">by {book.author}</p>
         <p className='mt-8 text-[#032B37] text-3xl font-bold flex items-center'>
-          <FaRupeeSign className='' /> {book.price}{" "}
+          <FaIndianRupeeSign className='' /> {book.price}{" "}
         </p>
         <p className="mt-8 text-gray-600">{book.desc}</p>
         <p className='flex mt-4 items-center justify-start text-zinc-600'>
