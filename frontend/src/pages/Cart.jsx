@@ -31,18 +31,22 @@ const Cart = () => {
       }
     };
     fetch();
-  }, []); // Run the effect only once
+  }, [Cart]); // Run the effect only once
 
-  const deleteItem = async (id) => {
-    try {
-      await axios.delete(`http://localhost:1000/api/v1/remove-from-cart/${id}`, { headers });
-      setCart(Cart.filter(item => item._id !== id));
-      setTotal(Total - Cart.find(item => item._id === id).price);
-    } catch (error) {
-      console.error('Failed to delete item:', error);
-    }
+  // const deleteItem = async (id) => {
+  //   try {
+  //     await axios.delete(`http://localhost:1000/api/v1/remove-from-cart/${id}`, { headers });
+  //     setCart(Cart.filter(item => item._id !== id));
+  //     setTotal(Total - Cart.find(item => item._id === id).price);
+  //   } catch (error) {
+  //     console.error('Failed to delete item:', error);
+  //   }
+  // };
+  const deleteItem = async (bookid) => {
+    const response = await axios.put(`http://localhost:1000/api/v1/remove-from-cart/${bookid}`,{}, { headers }
+    );
+    alert(response.data.message);
   };
-
   return (
     <div className='bg-[#F3F8F9] px-12 h-screen py-8'>
       {!Cart.length && <Loader />}
