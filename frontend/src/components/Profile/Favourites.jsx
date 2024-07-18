@@ -19,9 +19,9 @@ const Favourites = () => {
   
   return (
     <div className='grid grid-cols-4 gap-4'>
-      {!favouritebooks && <div className='text-4xl font-semibold text-[#086D8A]'>
+      {/* {!favouritebooks && <div className='text-4xl font-semibold text-[#086D8A]'>
       No Favourite Books
-      </div>}
+      </div>} */}
       {favouritebooks && favouritebooks.map((items,i)=>
       <div key={i}>
       <Bookcard data ={items}favourite={true}/> 
