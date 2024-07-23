@@ -4,7 +4,6 @@ import {FaSignOutAlt } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../../store/auth';
 
-
 const Sidebar = ({data}) => {
    const dispatch = useDispatch();
    const history = useNavigate();
