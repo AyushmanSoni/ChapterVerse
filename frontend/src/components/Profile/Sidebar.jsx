@@ -1,9 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {FaSignOutAlt } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/auth';
 
 
 const Sidebar = ({data}) => {
+   const dispatch = useDispatch();
+   const history = useNavigate();
   return (
     <div className='bg-white p-4 rounded flex flex-col items-center justify-between h-[100%]'>
         <div className='flex items-center flex-col justify-center'>{""}
@@ -26,7 +30,16 @@ const Sidebar = ({data}) => {
                 Settings
             </Link>
         </div>
-        <button className='bg-[#086D8A w-3/6 lg:w-full mt-4 lg:mt-0 text-[#086D8A] border border-[#086D8A] font-semibold flex items-center justify-center py-2 rounded hover:bg-[#075A71] transition-all duration-300 hover:text-white'>
+        <button className='bg-[#086D8A w-3/6 lg:w-full mt-4 lg:mt-0 text-[#086D8A] border border-[#086D8A] font-semibold flex items-center justify-center py-2 rounded hover:bg-[#075A71] transition-all duration-300 hover:text-white' 
+        onClick={()=>{
+            dispatch(authActions.logout());
+            dispatch(authActions.changeRole("user"));
+            localStorage.clear("id");
+            localStorage.clear("token");
+            localStorage.clear("role");
+            history("/");
+        }
+        }>
         Log Out <FaSignOutAlt  className="ms-4"/>
         </button>
     </div>
