@@ -10,10 +10,20 @@ const Navbar = () => {
     { title: 'All Books', link: '/all-books' },
     { title: 'Cart', link: '/cart' },
     { title: 'Profile', link: '/profile' },
+    { title: 'Admin Profile', link: '/profile' },
   ];
+
   const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn);
+  const role = useSelector((state)=>state.auth.role);
+  
   if(isLoggedIn == false){
     links.splice(2,2);
+  }
+  if(isLoggedIn== true && role ==="admin"){
+    links.splice(3,1);
+  }
+  if(isLoggedIn== true && role ==="user"){
+    links.splice(4,1);
   }
   return (
     <div className='bg-[#F3F8F9] text-grey px-4 md:px-24 py-4'>
