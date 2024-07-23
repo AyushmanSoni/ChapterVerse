@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GrLanguage } from 'react-icons/gr';
@@ -12,9 +12,9 @@ import { MdDelete } from "react-icons/md";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 
 const Bookdetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams(); // get the book id from the URL
   const [book, setBook] = useState(null);
-
   const isLoggedIn = useSelector((state)=> state.auth.isLoggedIn);
   const role= useSelector((state)=> state.auth.role);
   // console.log(isLoggedIn);
@@ -50,6 +50,12 @@ const Bookdetails = () => {
     const response = await axios.put("http://localhost:1000/api/v1/add-to-cart",{},{headers});
     alert(response.data.message);
   }
+  const deletebook = async ()=>{
+    const response = await axios.delete("http://localhost:1000/api/v1/delete-book",{headers});
+    alert(response.data.message);
+    navigate("/all-books")
+  }
+  
   return (
     <>
     {book && (<div className='px-4 py-4 bg-[#F3F8F9] flex md:flex-row flex-col gap-8'>
@@ -79,7 +85,9 @@ const Bookdetails = () => {
           </button>
         </div>}
         {isLoggedIn ===true && role === "admin" && <div className='mt-4 flex flex-row gap-4'>
-          <button className='bg-red-700 rounded text-xl p-3 text-white flex items-center hover:bg-red-800'>
+          <button className='bg-red-700 rounded text-xl p-3 text-white flex items-center hover:bg-red-800'
+          onClick={deletebook}
+          >
             <MdDelete  className='mr-2' /> Delete Book
           </button>
         </div>}
