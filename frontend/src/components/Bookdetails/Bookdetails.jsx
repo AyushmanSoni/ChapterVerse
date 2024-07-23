@@ -79,7 +79,7 @@ const Bookdetails = () => {
           </button>
         </div>}
         {isLoggedIn ===true && role === "admin" && <div className='mt-4 flex flex-row gap-4'>
-          <button className='bg-red-700 rounded text-xl p-3 text-white flex items-center'>
+          <button className='bg-red-700 rounded text-xl p-3 text-white flex items-center hover:bg-red-800'>
             <MdDelete  className='mr-2' /> Delete Book
           </button>
         </div>}
