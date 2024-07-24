@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GrLanguage } from 'react-icons/gr';
-
+import { Link } from 'react-router-dom';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import Loader from '../Loader/Loader';
 import { useSelector } from 'react-redux';
@@ -65,9 +65,9 @@ const Bookdetails = () => {
         >
           <FaHeart />
         </button>}
-        {isLoggedIn ===true && role === "admin" && <button className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
+        {isLoggedIn ===true && role === "admin" && <Link to={`/updateBook/${id}`} className='absolute top-4 right-4 bg-[#086D8A] rounded-full text-xl text-white p-3'>
           <MdEdit />
-        </button>}
+        </Link>}
       </div>
       <div className='p-4 w-full lg:w-3/6 bg-white'>
         <h1 className='text-4xl text-[#032B37] font-semibold'>{book.title}</h1>
