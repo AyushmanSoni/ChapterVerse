@@ -2,7 +2,7 @@
   "name": "chapterverse",
   "version": "1.0.0",
   "description": "mern project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
