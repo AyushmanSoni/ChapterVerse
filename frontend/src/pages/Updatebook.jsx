@@ -40,7 +40,7 @@ const Updatebook = () => {
       } else {
         console.log("entered")
         const response = await axios.put(
-          "http://localhost:1000/api/v1/update-book",
+          "https://chapterverse1.onrender.com/api/v1/update-book",
           Data,
           { headers }
         );
@@ -64,7 +64,7 @@ const Updatebook = () => {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:1000/api/v1/get-book-by-id/${id}`);
+        const response = await axios.get(`https://chapterverse1.onrender.com/api/v1/get-book-by-id/${id}`);
         setData(response.data.data);
       } catch (error) {
         console.error('Error fetching book details:', error);

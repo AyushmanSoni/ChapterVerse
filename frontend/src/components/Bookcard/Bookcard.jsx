@@ -10,7 +10,7 @@ const Bookcard = ({ data,favourite }) => {
     bookid:data._id,
   };
   const handleRemoveBook = async ()=>{
-    const response = await axios.put("http://localhost:1000/api/v1/remove-book-from-favourites",{},{headers});
+    const response = await axios.put("https://chapterverse1.onrender.com/api/v1/remove-book-from-favourites",{},{headers});
     alert(response.data.message);
   };
   return (

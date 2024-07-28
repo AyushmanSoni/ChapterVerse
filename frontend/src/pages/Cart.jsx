@@ -20,7 +20,7 @@ const Cart = () => {
     const fetchCartData = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:1000/api/v1/get-user-cart", { headers }
+          "https://chapterverse1.onrender.com/api/v1/get-user-cart", { headers }
         );
         setCart(res.data.data);
         let total = 0;
@@ -40,7 +40,7 @@ const Cart = () => {
   const deleteItem = async (bookid) => {
     try {
       const response = await axios.put(
-        `http://localhost:1000/api/v1/remove-from-cart/${bookid}`, {}, { headers }
+        `https://chapterverse1.onrender.com/api/v1/remove-from-cart/${bookid}`, {}, { headers }
       );
       alert(response.data.message);
       setCart(Cart.filter(item => item._id !== bookid));
@@ -53,7 +53,7 @@ const Cart = () => {
   const PlaceOrder = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:1000/api/v1/place-order`,
+        `https://chapterverse1.onrender.com/api/v1/place-order`,
         { order: Cart },
         { headers }
       );

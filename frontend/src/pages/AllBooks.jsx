@@ -7,7 +7,7 @@ const AllBooks = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://localhost:1000/api/v1/get-all-books');
+        const response = await axios.get('https://chapterverse1.onrender.com/api/v1/get-all-books');
         console.log('Fetched data:', response.data.data); // Log the fetched data
         setData(response.data.data); // Update the state with fetched data
       } catch (error) {

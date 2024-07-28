@@ -15,14 +15,14 @@ const Settings = () => {
   }
   useEffect(()=>{
     const fetch = async ()=>{
-      const response = await axios.get("http://localhost:1000/api/v1/get-user-info",{headers});
+      const response = await axios.get("https://chapterverse1.onrender.com/api/v1/get-user-info",{headers});
       setProfileData(response.data);
       setValue({address: response.data.address});
     };
     fetch();
   },[]);
   const submitAddress = async ()=>{
-    const response = await axios.put("http://localhost:1000/api/v1/update-address",Value,{headers});
+    const response = await axios.put("https://chapterverse1.onrender.com/api/v1/update-address",Value,{headers});
     alert(response.data.message);
   };
   return(

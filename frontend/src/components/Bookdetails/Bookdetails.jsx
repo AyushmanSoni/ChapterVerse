@@ -23,7 +23,7 @@ const Bookdetails = () => {
     const fetchBookDetails = async () => {
       try {
         console.log(id);
-        const response = await axios.get(`http://localhost:1000/api/v1/get-book-by-id/${id}`);
+        const response = await axios.get(`https://chapterverse1.onrender.com/api/v1/get-book-by-id/${id}`);
         console.log(response)
         setBook(response.data.data);
       } catch (error) {
@@ -43,15 +43,15 @@ const Bookdetails = () => {
     bookid: id,
   };
   const handleFavourite = async ()=>{
-    const response = await axios.put("http://localhost:1000/api/v1/add-book-to-favourites",{},{headers});
+    const response = await axios.put("https://chapterverse1.onrender.com/api/v1/add-book-to-favourites",{},{headers});
     alert(response.data.message);
   }
   const handleCart = async ()=>{
-    const response = await axios.put("http://localhost:1000/api/v1/add-to-cart",{},{headers});
+    const response = await axios.put("https://chapterverse1.onrender.com/api/v1/add-to-cart",{},{headers});
     alert(response.data.message);
   }
   const deletebook = async ()=>{
-    const response = await axios.delete("http://localhost:1000/api/v1/delete-book",{headers});
+    const response = await axios.delete("https://chapterverse1.onrender.com/api/v1/delete-book",{headers});
     alert(response.data.message);
     navigate("/all-books")
   }

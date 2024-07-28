@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <div className='h-auto lg:h-[75vh] flex flex-col lg:flex-row'>
@@ -22,9 +22,9 @@ const Hero = () => {
           </p>
         </div>
         <div className='mt-8'>
-          <button className='bg-[#086D8A] text-white text-lg font-semibold py-2 px-8 rounded hover:bg-[#065b70]'>
+          <Link to = "/all-books" className='bg-[#086D8A] text-white text-lg font-semibold py-2 px-8 rounded hover:bg-[#065b70]'>
             Discover Books
-          </button>
+          </Link>
         </div>
         <div className='mt-8 grid grid-cols-1 md:grid-cols-2 gap-4'>
           <div className='flex items-center'>

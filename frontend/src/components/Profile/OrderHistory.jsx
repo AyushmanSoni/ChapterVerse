@@ -15,7 +15,7 @@ const OrderHistory = () => {
   useEffect(() => {
     const fetchOrderHistory = async () => {
       try {
-        const response = await axios.get("http://localhost:1000/api/v1/get-order-history", { headers });
+        const response = await axios.get("https://chapterverse1.onrender.com/api/v1/get-order-history", { headers });
         setOrderHistory(response.data.data);
         setIsLoading(false);
       } catch (error) {
